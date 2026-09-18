@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Para Michel ❤️</title>
+<style>
+*{box-sizing:border-box} body{margin:0;min-height:100vh;background:linear-gradient(145deg,#fff7fa,#f7f2ff);font-family:Georgia,serif;color:#342a31;display:flex;align-items:center;justify-content:center;padding:22px}
+.card{width:min(620px,100%);min-height:640px;background:rgba(255,255,255,.9);border-radius:28px;padding:34px 28px;box-shadow:0 20px 60px rgba(80,45,70,.15);display:flex;flex-direction:column;justify-content:center;text-align:center}
+.kicker{font:600 13px/1.4 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#9b7188;margin-bottom:20px}
+#text{font-size:clamp(23px,5vw,32px);line-height:1.55;min-height:310px;display:flex;align-items:center;justify-content:center;white-space:pre-line;opacity:1;transition:opacity .7s}
+button{border:0;border-radius:999px;padding:15px 24px;background:#9b7188;color:white;font-size:16px;cursor:pointer;box-shadow:0 8px 20px rgba(155,113,136,.25)}
+button:active{transform:scale(.98)}
+#musicNote{font:13px Arial,sans-serif;color:#8b7b83;margin-top:14px}
+.final{font-size:clamp(34px,8vw,56px)!important;line-height:1.2!important;font-weight:bold}
+.heart{font-size:42px;margin-top:10px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="kicker">Para ti, Michel</div>
+  <div id="text">Tengo algo que quiero decirte…</div>
+  <button id="start">Toca para comenzar ❤️</button>
+  <div id="musicNote">Iris — Goo Goo Dolls</div>
+</main>
+
+<script>
+const scenes = [
+["Tengo algo que quiero decirte…", 0],
+["Hay personas que llegan a nuestra vida y simplemente pasan.", 4],
+["Y hay otras que, sin darte cuenta, empiezan a convertirse en parte de tus días, de tus pensamientos y de tus sonrisas.", 9],
+["Contigo me ha pasado eso.", 15],
+["He disfrutado nuestras conversaciones, nuestras risas y todos esos momentos que hemos compartido.", 20],
+["Pero sobre todo, me encanta la forma en que poco a poco hemos ido construyendo algo que para mí se siente muy especial.", 26],
+["Y mientras más te conozco, más claro tengo algo:", 33],
+["No quiero solamente seguir acumulando momentos contigo…
+quiero crear muchos más.", 38],
+["Quiero conocer lugares contigo, reírnos, apoyarte cuando las cosas no sean fáciles y celebrar contigo cuando todo salga bien.", 43],
+["Porque estoy seguro de que cualquier experiencia y cualquier aventura que venga…", 49],
+["QUIERO VIVIRLA CONTIGO. ❤️", 54],
+["Así que después de pensarlo mucho…", 57],
+["🫣 Tengo una pregunta para ti…", 59],
+["¿PUEDO SER TU NOVIO? ❤️", 60]
+];
+
+const text = document.getElementById("text");
+const start = document.getElementById("start");
+const note = document.getElementById("musicNote");
+
+start.onclick = () => {
+  start.classList.add("hidden");
+  note.textContent = "🎵 Ahora comienza “Iris” — Goo Goo Dolls.";
+  const started = performance.now();
+  let i = 0;
+  function tick() {
+    const sec = (performance.now()-started)/1000;
+    while (i < scenes.length && sec >= scenes[i][1]) {
+      text.style.opacity = 0;
+      const current = i;
+      setTimeout(() => {
+        text.textContent = scenes[current][0];
+        text.className = current >= scenes.length-3 ? "final" : "";
+        text.style.opacity = 1;
+      }, 650);
+      i++;
+    }
+    if(i < scenes.length) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+};
+</script>
+</body>
+</html>
