@@ -5,26 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Para Michel ❤️</title>
 <style>
-*{box-sizing:border-box} body{margin:0;min-height:100vh;background:linear-gradient(145deg,#fff7fa,#f7f2ff);font-family:Georgia,serif;color:#342a31;display:flex;align-items:center;justify-content:center;padding:22px}
-.card{width:min(620px,100%);min-height:640px;background:rgba(255,255,255,.9);border-radius:28px;padding:34px 28px;box-shadow:0 20px 60px rgba(80,45,70,.15);display:flex;flex-direction:column;justify-content:center;text-align:center}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:linear-gradient(145deg,#fff7fa,#f7f2ff);font-family:Georgia,serif;color:#342a31;display:flex;align-items:center;justify-content:center;padding:22px;overflow:hidden}
+.card{width:min(620px,100%);min-height:640px;background:rgba(255,255,255,.92);border-radius:28px;padding:34px 28px;box-shadow:0 20px 60px rgba(80,45,70,.15);display:flex;flex-direction:column;justify-content:center;text-align:center;position:relative;z-index:2}
 .kicker{font:600 13px/1.4 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#9b7188;margin-bottom:20px}
 #text{font-size:clamp(23px,5vw,32px);line-height:1.55;min-height:310px;display:flex;align-items:center;justify-content:center;white-space:pre-line;opacity:1;transition:opacity .7s}
-button{border:0;border-radius:999px;padding:15px 24px;background:#9b7188;color:white;font-size:16px;cursor:pointer;box-shadow:0 8px 20px rgba(155,113,136,.25)}
+button{border:0;border-radius:999px;padding:15px 24px;background:#9b7188;color:white;font-size:16px;cursor:pointer;box-shadow:0 8px 20px rgba(155,113,136,.25);transition:transform .2s,box-shadow .2s}
 button:active{transform:scale(.98)}
 #musicNote{font:13px Arial,sans-serif;color:#8b7b83;margin-top:14px}
 .final{font-size:clamp(34px,8vw,56px)!important;line-height:1.2!important;font-weight:bold}
-.heart{font-size:42px;margin-top:10px;animation:pulse 1.5s infinite}
-@keyframes pulse{50%{transform:scale(1.15)}}
-.hidden{display:none}
+.hidden{display:none!important}
+
+#proposal{display:none;min-height:310px;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+#proposal.show{display:flex}
+#proposalQuestion{font-size:clamp(34px,8vw,54px);line-height:1.2;margin:0 0 10px}
+#yesBtn{width:min(440px,90%);font-size:clamp(28px,7vw,42px);font-family:Georgia,serif;font-weight:bold;padding:20px 30px;background:#a9688c;box-shadow:0 12px 30px rgba(169,104,140,.32)}
+#yesBtn:hover{transform:translateY(-2px);box-shadow:0 16px 35px rgba(169,104,140,.38)}
+#noBtn{font-family:Georgia,serif;font-size:15px;padding:9px 22px;background:#f5edf2;color:#6f5c68;box-shadow:none;border:1px solid #e4d6df}
+
+#celebration{display:none;position:fixed;inset:0;z-index:10;overflow:hidden;background:radial-gradient(circle at 50% 38%,#ffb8d0 0,#d96d9b 28%,#7f315c 68%,#32152d 100%);color:white;text-align:center;align-items:center;justify-content:center;padding:28px}
+#celebration.show{display:flex}
+.celebrate-content{position:relative;z-index:3;max-width:700px}
+.bigYes{font-size:clamp(76px,20vw,150px);font-weight:bold;line-height:.9;margin:0 0 25px;text-shadow:0 5px 25px rgba(0,0,0,.18)}
+.celebrate-title{font-size:clamp(28px,6vw,44px);margin:0 0 14px}
+.celebrate-copy{font-size:clamp(19px,4vw,25px);line-height:1.5;margin:0 auto 30px}
+.symbols{display:flex;justify-content:center;gap:35px;flex-wrap:wrap}
+.symbol{font-family:Arial,sans-serif;font-size:13px;letter-spacing:1px}
+.symbol b{display:block;font-family:Georgia,serif;font-size:35px;margin-bottom:6px}
+.floating{position:absolute;font-size:clamp(24px,5vw,48px);animation:floatUp linear infinite;opacity:.8}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:white;box-shadow:0 0 14px 5px rgba(255,255,255,.8);animation:sparkle 1.8s infinite}
+@keyframes floatUp{from{transform:translateY(110vh) rotate(0deg);opacity:0}15%{opacity:.8}to{transform:translateY(-15vh) rotate(25deg);opacity:0}}
+@keyframes sparkle{50%{transform:scale(3);opacity:.3}}
 </style>
 </head>
 <body>
 <main class="card">
   <div class="kicker">Para ti, Michel</div>
+
   <div id="text">Tengo algo que quiero decirte…</div>
+
+  <div id="proposal">
+    <h1 id="proposalQuestion">¿Puedo ser tu novio? ❤️</h1>
+    <button id="yesBtn">Sí ❤️</button>
+    <button id="noBtn">No</button>
+  </div>
+
   <button id="start">Toca para comenzar ❤️</button>
   <div id="musicNote">Iris — Goo Goo Dolls</div>
 </main>
+
+<div id="celebration">
+  <div class="celebrate-content">
+    <div class="bigYes">¡SÍ! ❤️</div>
+    <h2 class="celebrate-title">Gracias por decir que sí…</h2>
+    <p class="celebrate-copy">No imaginas lo feliz que me haces. ❤️<br>Esto apenas comienza.</p>
+    <div class="symbols">
+      <div class="symbol"><b>♡</b>POR HOY</div>
+      <div class="symbol"><b>∞</b>POR TODO<br>LO QUE VIENE</div>
+      <div class="symbol"><b>☆</b>POR NOSOTROS</div>
+    </div>
+  </div>
+</div>
 
 <script>
 const scenes = [
@@ -35,40 +76,86 @@ const scenes = [
 ["He disfrutado nuestras conversaciones, nuestras risas y todos esos momentos que hemos compartido.", 20],
 ["Pero sobre todo, me encanta la forma en que poco a poco hemos ido construyendo algo que para mí se siente muy especial.", 26],
 ["Y mientras más te conozco, más claro tengo algo:", 33],
-["No quiero solamente seguir acumulando momentos contigo…
-quiero crear muchos más.", 38],
+["No quiero solamente seguir acumulando momentos contigo…\nquiero crear muchos más.", 38],
 ["Quiero conocer lugares contigo, reírnos, apoyarte cuando las cosas no sean fáciles y celebrar contigo cuando todo salga bien.", 43],
 ["Porque estoy seguro de que cualquier experiencia y cualquier aventura que venga…", 49],
 ["QUIERO VIVIRLA CONTIGO. ❤️", 54],
 ["Así que después de pensarlo mucho…", 57],
-["🫣 Tengo una pregunta para ti…", 59],
-["¿PUEDO SER TU NOVIO? ❤️", 60]
+["🫣 Tengo una pregunta para ti…", 59]
 ];
 
 const text = document.getElementById("text");
 const start = document.getElementById("start");
-const note = document.getElementById("musicNote");
+const proposal = document.getElementById("proposal");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const celebration = document.getElementById("celebration");
 
 start.onclick = () => {
   start.classList.add("hidden");
-  note.textContent = "🎵 Ahora comienza “Iris” — Goo Goo Dolls.";
   const started = performance.now();
   let i = 0;
+
   function tick() {
     const sec = (performance.now()-started)/1000;
+
     while (i < scenes.length && sec >= scenes[i][1]) {
       text.style.opacity = 0;
       const current = i;
+
       setTimeout(() => {
         text.textContent = scenes[current][0];
-        text.className = current >= scenes.length-3 ? "final" : "";
+        text.className = current >= scenes.length-2 ? "final" : "";
         text.style.opacity = 1;
       }, 650);
+
       i++;
     }
-    if(i < scenes.length) requestAnimationFrame(tick);
+
+    if (i < scenes.length) {
+      requestAnimationFrame(tick);
+    } else {
+      // The final question appears after the last story line.
+      setTimeout(() => {
+        text.style.opacity = 0;
+        setTimeout(() => {
+          text.classList.add("hidden");
+          proposal.classList.add("show");
+        }, 650);
+      }, 2500);
+    }
   }
+
   requestAnimationFrame(tick);
+};
+
+yesBtn.onclick = () => {
+  celebration.classList.add("show");
+
+  // Decorative hearts and sparkles.
+  for (let i = 0; i < 22; i++) {
+    const heart = document.createElement("div");
+    heart.className = "floating";
+    heart.textContent = i % 3 === 0 ? "♡" : "♥";
+    heart.style.left = Math.random()*100 + "%";
+    heart.style.animationDuration = (4 + Math.random()*5) + "s";
+    heart.style.animationDelay = (-Math.random()*6) + "s";
+    celebration.appendChild(heart);
+  }
+
+  for (let i = 0; i < 28; i++) {
+    const spark = document.createElement("div");
+    spark.className = "spark";
+    spark.style.left = Math.random()*100 + "%";
+    spark.style.top = Math.random()*100 + "%";
+    spark.style.animationDelay = (Math.random()*2) + "s";
+    celebration.appendChild(spark);
+  }
+};
+
+// The "No" button stays small and harmless; it does not pressure the choice.
+noBtn.onclick = () => {
+  noBtn.textContent = "Está bien ❤️";
 };
 </script>
 </body>
